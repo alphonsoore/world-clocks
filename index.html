@@ -79,6 +79,17 @@
     font-size: 16px;
     cursor: pointer;
   }
+  .fullscreen-button {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
 </style>
 </head>
 <body>
@@ -219,6 +230,8 @@
   </tr>
 </table>
 
+  <div class="fullscreen-button" onclick="toggleFullScreen()">Fullscreen</div>
+
 
 
 
@@ -242,6 +255,18 @@
       circle.style.transform = `rotate(${newRotation}deg)`;
     });
   }
+
+function toggleFullScreen() {
+  if (!document.fullscreenElement) {
+    document.documentElement.requestFullscreen();
+  } else {
+    if (document.exitFullscreen) {
+      document.exitFullscreen();
+    }
+  }
+}
+
+  
 </script>
 
 </body>
