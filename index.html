@@ -14,6 +14,8 @@
     align-items: center;
     justify-content: center;
     height: 100vh;
+overflow: hidden;
+    background-color: #D2B48C;
   }
   .clock-wrapper {
     display: flex;
@@ -24,6 +26,7 @@
     position: relative;
     text-align: center;
     margin: 0 10px;
+z-index: 2;
   }
   .clock {
     position: relative;
@@ -32,6 +35,7 @@
     border-radius: 50%;
     border: 2px solid black;
     overflow: hidden;
+z-index: 2;
   }
   .clock-face {
     width: 100%;
@@ -65,14 +69,17 @@
     left: -4px; /* Adjust the position as needed */
   }
   .rotating-circle {
-    width: 100px;
-    height: 100px;
+    width: 199px;
+    height: 199px;
     border-radius: 50%;
-    border: 2px solid blue;
+    border: white;
     background-image: url('day-night.png'); /* Replace 'day-night.png' with your texture */
     background-size: cover;
     animation: rotateCircle 24s linear infinite;
-    image-rendering: pixelated;
+    float: right;
+    position: absolute;
+    left: 50%;
+  margin-top: -10%;
   }
   .button {
     padding: 8px 16px;
@@ -80,28 +87,67 @@
     font-size: 16px;
     cursor: pointer;
   }
-  .fullscreen-button {
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    cursor: pointer;
-  }
+.fullscreen-button {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.5); /* Adjust shadow values as needed */
+}
+
+
+
+.cover {
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+  border: 140px solid #D2B48C; /* Adjust thickness and color as needed */
+  float: right;
+  position: absolute;
+  left: 15.6%;
+  margin-top: -75%;
+}
+
+
+
+table.clock-rack {
+  border-collapse: separate;
+  border-spacing: 10px; /* Adjust spacing as needed */
+}
+table.clock-rack td, table.clock-rack th {
+  border: 25px solid #D2B48C; /* Adjust thickness as needed */
+}
+
+
+.button {
+  font-size: 150%; /* Adjust font size as needed */
+  text-align: center;
+  line-height: 25px;
+  margin-top: -10%;
+  width: 50px;
+  height: 50px;
+  padding: 0% 0%;
+}
+
+
+
 </style>
 </head>
 <body>
 
+<table class="clock-rack">
 
-<table>
   <tr>
     <td>
 
 <div class="clock-wrapper">
-    <div class="rotating-circle"></div>
+    <div class="rotating-circle" style="transform: rotate(0deg);"></div> 
+    <div class="cover"></div>
 
   <div class="location">
 
@@ -109,7 +155,7 @@
       <div class="clock-face"></div>
       <div class="hour-hand"></div>
     </div>
-    Location 1
+    Tokyo<br>とうきょう
   </div>
 </div>
 
@@ -117,15 +163,17 @@
     <td>
 
 <div class="clock-wrapper">
-    <div class="rotating-circle"></div>
+    <div class="rotating-circle" style="transform: rotate(135deg);"></div>
+    <div class="cover"></div>
+
 
   <div class="location">
 
     <div class="clock" id="clock1">
       <div class="clock-face"></div>
-      <div class="hour-hand"></div>
+      <div class="hour-hand" style="transform: rotate(-270deg);"></div>
     </div>
-    Location 1
+    London<br>ロンドン
   </div>
 </div>
 
@@ -133,15 +181,16 @@
     <td>
 
 <div class="clock-wrapper">
-    <div class="rotating-circle"></div>
+    <div class="rotating-circle" style="transform: rotate(15deg);"></div>
+    <div class="cover"></div>
 
   <div class="location">
 
     <div class="clock" id="clock1">
       <div class="clock-face"></div>
-      <div class="hour-hand"></div>
+      <div class="hour-hand" style="transform: rotate(-30deg);"></div>
     </div>
-    Location 1
+    Shanghai<br>シャンハイ
   </div>
 </div>
 
@@ -149,15 +198,16 @@
     <td>
 
 <div class="clock-wrapper">
-    <div class="rotating-circle"></div>
+    <div class="rotating-circle" style="transform: rotate(90deg);"></div>
+    <div class="cover"></div>
 
   <div class="location">
 
     <div class="clock" id="clock1">
       <div class="clock-face"></div>
-      <div class="hour-hand"></div>
+      <div class="hour-hand" style="transform: rotate(180deg);"></div>
     </div>
-    Location 1
+    Istanbul<br>イスタンブール
   </div>
 </div>
 
@@ -167,15 +217,16 @@
     <td>
 
 <div class="clock-wrapper">
-    <div class="rotating-circle"></div>
+    <div class="rotating-circle" style="transform: rotate(180deg);"></div>
+    <div class="cover"></div>
 
   <div class="location">
 
     <div class="clock" id="clock1">
       <div class="clock-face"></div>
-      <div class="hour-hand"></div>
+      <div class="hour-hand" style="transform: rotate(360deg);"></div>
     </div>
-    Location 1
+    Buenos Aires<br>ブエノスアイレス
   </div>
 </div>
 
@@ -183,15 +234,16 @@
     <td>
 
 <div class="clock-wrapper">
-    <div class="rotating-circle"></div>
+    <div class="rotating-circle" style="transform: rotate(-105deg);"></div>
+    <div class="cover"></div>
 
   <div class="location">
 
     <div class="clock" id="clock1">
       <div class="clock-face"></div>
-      <div class="hour-hand"></div>
+      <div class="hour-hand" style="transform: rotate(210deg);"></div>
     </div>
-    Location 1
+    San Francisco<br>サンフランシスコ
   </div>
 </div>
 
@@ -199,15 +251,16 @@
     <td>
 
 <div class="clock-wrapper">
-    <div class="rotating-circle"></div>
+    <div class="rotating-circle" style="transform: rotate(-150deg);"></div>
+    <div class="cover"></div>
 
   <div class="location">
 
     <div class="clock" id="clock1">
       <div class="clock-face"></div>
-      <div class="hour-hand"></div>
+      <div class="hour-hand" style="transform: rotate(300deg);"></div>
     </div>
-    Location 1
+    New York<br>ニューヨーク
   </div>
 </div>
 
@@ -215,15 +268,17 @@
     <td>
 
 <div class="clock-wrapper">
-    <div class="rotating-circle" style="transform: rotate(15deg);"></div>
+    <div class="rotating-circle" style="transform: rotate(-75deg);"></div>
+
+    <div class="cover"></div>
 
   <div class="location">
 
     <div class="clock" id="clock1">
       <div class="clock-face"></div>
-      <div class="hour-hand" style="transform: rotate(30deg);"></div>
+      <div class="hour-hand" style="transform: rotate(150deg);"></div>
     </div>
-    Location 1
+    Honolulu<br>ホノルル
   </div>
 </div>
 
@@ -233,29 +288,47 @@
 
   <div class="fullscreen-button" onclick="toggleFullScreen()">Fullscreen</div>
 
+<table class="buttons-rack">
+  <colgroup span="12"></colgroup>
+  <tr>
+    <td><button class="button" onclick="moveHands(1)">+1</button></td>
+    <td><button class="button" onclick="moveHands(2)">+2</button></td>
+    <td><button class="button" onclick="moveHands(3)">+3</button></td>
+    <td><button class="button" onclick="moveHands(4)">+4</button></td>
+    <td><button class="button" onclick="moveHands(5)">+5</button></td>
+    <td><button class="button" onclick="moveHands(6)">+6</button></td>
+    <td><button class="button" onclick="moveHands(7)">+7</button></td>
+    <td><button class="button" onclick="moveHands(8)">+8</button></td>
+    <td><button class="button" onclick="moveHands(9)">+9</button></td>
+    <td><button class="button" onclick="moveHands(10)">+10</button></td>
+    <td><button class="button" onclick="moveHands(11)">+11</button></td>
+    <td><button class="button" onclick="moveHands(12)">+12</button></td>
+  </tr>
+</table>
 
 
-
-<button class="button" onclick="moveHands(1)">Plus one hour</button>
 
 <script>
   const hourHands = document.querySelectorAll('.hour-hand');
+function moveHands(hours) {
+  hourHands.forEach(hand => {
+    const currentRotation = parseInt(hand.style.transform.replace('rotate(', '').replace('deg)', '') || '0');
+    const newRotation = currentRotation + (hours * 30); // Each hour moves hand 30 degrees
+    hand.style.transition = 'transform 0.5s ease'; // Add transition for smooth animation
+    hand.style.transform = `rotate(${newRotation}deg)`;
+  });
 
-  function moveHands(hours) {
-    hourHands.forEach(hand => {
-      const currentRotation = parseInt(hand.style.transform.replace('rotate(', '').replace('deg)', '') || '0');
-      const newRotation = currentRotation + (hours * 30); // Each hour moves hand 30 degrees
-      hand.style.transform = `rotate(${newRotation}deg)`;
-    });
+  // Rotate the rotating circles
+  const rotatingCircles = document.querySelectorAll('.rotating-circle');
+  rotatingCircles.forEach(circle => {
+    const currentRotation = parseInt(circle.style.transform.replace('rotate(', '').replace('deg)', '') || '0');
+    const newRotation = currentRotation - (hours * 15); // Each hour moves circle 15 degrees
+    circle.style.transition = 'transform 0.5s ease'; // Add transition for smooth animation
+    circle.style.transform = `rotate(${newRotation}deg)`;
+  });
+}
 
-    // Rotate the rotating circles
-    const rotatingCircles = document.querySelectorAll('.rotating-circle');
-    rotatingCircles.forEach(circle => {
-      const currentRotation = parseInt(circle.style.transform.replace('rotate(', '').replace('deg)', '') || '0');
-      const newRotation = currentRotation + (hours * 15); // Each hour moves circle 15 degrees
-      circle.style.transform = `rotate(${newRotation}deg)`;
-    });
-  }
+
 
 function toggleFullScreen() {
   if (!document.fullscreenElement) {
