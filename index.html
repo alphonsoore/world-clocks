@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -55,6 +55,7 @@ z-index: 2;
     top: 50%;
     left: 50%;
     margin-top: -50px;
+    box-shadow: 2px 2px 0px #888888;
   }
 
   .hour-hand::after {
@@ -87,20 +88,28 @@ z-index: 2;
     font-size: 16px;
     cursor: pointer;
   }
+
 .fullscreen-button {
   position: absolute;
   bottom: 10px;
   right: 10px;
-  padding: 10px 20px;
-  font-size: 16px;
-  background-color: #007bff;
-  color: white;
-  border: none;
+  padding: 20px 20px;
+  font-size: 24px;
+  background-color: #c8b6ff;
+  color: black;
   cursor: pointer;
-  text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.5); /* Adjust shadow values as needed */
+  height: 40px;
+  width: 40px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
 }
 
+.fullscreen-button:hover {
+  background-color: #372800;
+  color: #ffffff;
 
+}
 
 .cover {
   width: 75px;
@@ -125,13 +134,28 @@ table.clock-rack td, table.clock-rack th {
 
 
 .button {
-  font-size: 150%; /* Adjust font size as needed */
+  font-size: 150%;
   text-align: center;
   line-height: 25px;
   margin-top: -10%;
-  width: 50px;
-  height: 50px;
-  padding: 0% 0%;
+  width: 65px;
+  height: 65px;
+  padding: 0;
+  border-radius: 25px; /* Adjust for roundness */
+  background-color: #c8b6ff; /* Example pastel color */
+  color: black;/* Adjust text color as needed */
+}
+
+
+.button:active {
+  background-color: #372800;
+  color: #ffffff;
+
+}
+
+
+.table,td {
+  border: 10px solid transparent;
 }
 
 
@@ -286,11 +310,11 @@ table.clock-rack td, table.clock-rack th {
   </tr>
 </table>
 
-  <div class="fullscreen-button" onclick="toggleFullScreen()">Fullscreen</div>
+  <div class="fullscreen-button" onclick="toggleFullScreen()">🖥️</div>
 
 <table class="buttons-rack">
   <colgroup span="12"></colgroup>
-  <tr>
+  <div>
     <td><button class="button" onclick="moveHands(1)">+1</button></td>
     <td><button class="button" onclick="moveHands(2)">+2</button></td>
     <td><button class="button" onclick="moveHands(3)">+3</button></td>
@@ -314,7 +338,7 @@ function moveHands(hours) {
   hourHands.forEach(hand => {
     const currentRotation = parseInt(hand.style.transform.replace('rotate(', '').replace('deg)', '') || '0');
     const newRotation = currentRotation + (hours * 30); // Each hour moves hand 30 degrees
-    hand.style.transition = 'transform 0.5s ease'; // Add transition for smooth animation
+    hand.style.transition = 'transform 2s ease'; // Add transition for smooth animation
     hand.style.transform = `rotate(${newRotation}deg)`;
   });
 
@@ -323,7 +347,7 @@ function moveHands(hours) {
   rotatingCircles.forEach(circle => {
     const currentRotation = parseInt(circle.style.transform.replace('rotate(', '').replace('deg)', '') || '0');
     const newRotation = currentRotation - (hours * 15); // Each hour moves circle 15 degrees
-    circle.style.transition = 'transform 0.5s ease'; // Add transition for smooth animation
+    circle.style.transition = 'transform 2s ease'; // Add transition for smooth animation
     circle.style.transform = `rotate(${newRotation}deg)`;
   });
 }
